@@ -18,15 +18,15 @@
 <body>
     <div onclick="color()" id="mydiv"></div>
     <script>
+        var arr = ["red", "blue", "green", "purpal", "gray", "skyyblue", "brown", "white", "pink", "black"]
         var mydiv = document.getElementById('mydiv');
-        mydiv.style.backgroundColor = "random"
+        var i = Math.round(Math.random() * 9);
+        mydiv.style.backgroundColor = arr[i]
         function color() {
+            mydiv.style.backgroundColor = arr[++i]
+            if (i == 9)
+                i = -1
 
-            if (mydiv.style.backgroundColor == "blue") {
-                return (mydiv.style.backgroundColor = "red")
-            }
-            else if (mydiv.style.backgroundColor == "red") { return mydiv.style.backgroundColor = "green" }
-            else { return mydiv.style.backgroundColor = "blue" }
         }
 
     </script>

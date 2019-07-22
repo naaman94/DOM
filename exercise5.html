@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise #5: Input check</title>
@@ -12,34 +13,62 @@
             color: red;
             font-size: 0.7em;
         }
+
+        #submitBtn {
+            visibility: hidden;
+        }
     </style>
-    <script>
-        /* TODO complete this part */
-    </script>
+
 </head>
+
 <body>
+    <script>
+        function pass1() {
+            if (document.getElementById("password1").value.length < 6) {
+                document.getElementById("pw1_check").innerHTML = "to short"
 
-<form name="pw">
-    <table>
-        <tr>
-            <td>Password (min 6 characters):</td>
-            <td><input type="password" name="password1" id="password1" size="10" placeholder="Password"></td>
-            <td>
-                <div id="pw1_check" class="err"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Repeat password:</td>
-            <td><input type="password" name="password2" id="password2" size="10" placeholder="Password"></td>
-            <td>
-                <div id="pw2_check" class="err"></div>
-            </td>
-        </tr>
-    </table>
+            }
+            else {
+                document.getElementById("pw1_check").innerHTML = ""
+            }
+        }
+        function pass2() {
+            if (document.getElementById("password1").value === document.getElementById("password2").value) {
+                document.getElementById("pw2_check").innerHTML = ""
+                document.getElementById("submitBtn").style.visibility = "visible"
 
-    <input type="submit" value="Submit" id="submitBtn"/>
-</form>
+
+
+            }
+            else {
+                document.getElementById("pw2_check").innerHTML = "The two passwords doesnt match"
+            }
+        }
+    </script>
+    <form name="pw">
+        <table>
+            <tr>
+                <td>Password (min 6 characters):</td>
+                <td><input type="password" name="password1" id="password1" size="10" placeholder="Password"
+                        oninput="pass1()"></td>
+                <td>
+                <td id="pw1_check" class="err"></td>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Repeat password:</td>
+                <td><input type="password" name="password2" id="password2" size="10" placeholder="Password"
+                        oninput="pass2()"></td>
+                <td>
+                    <div id="pw2_check" class="err"></div>
+                </td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Submit" id="submitBtn" />
+    </form>
 
 </body>
-</html>
 
+</html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise #4: Formatting text</title>
     <style>
-        div {
+        #text {
             width: 600px;
             height: 100px;
             border: 1px solid black;
@@ -15,27 +16,71 @@
         }
     </style>
 </head>
-<body>
-<form name="form">
-    <select name="font_family" id="font_family">
-        <option value="Arial" selected>Arial</option>
-        <option value="Verdana">Verdana</option>
-        <option value="Helvetica">Helvetica</option>
-        <option value="Times New Roman">Times New Roman</option>
-        <option value="Courier New">Courier New</option>
-    </select>
-    <select name="font_size" id="font_size">
-        <option value="8pt">8pt</option>
-        <option value="10pt">10pt</option>
-        <option value="12pt" selected>12pt</option>
-        <option value="14pt">14pt</option>
-        <option value="16pt">16pt</option>
-    </select>
-    <label>Italic <input type="checkbox" name="font_italic" id="font_italic"></label>
-    <label>Bold <input type="checkbox" name="font_bold" id="font_bold"></label>
-    <label>Underline <input type="checkbox" name="font_underline" id="font_underline"></label>
-</form>
 
-<div id="text">The quick brown fox jumps over the lazy dog</div>
+<body>
+    <script>
+
+        function changeFont() {
+            var text = document.getElementById('text');
+            var fFamily = document.getElementById("font_family");
+            text.style.fontFamily = fFamily.value;
+        }
+        function changesize() {
+            var text = document.getElementById('text');
+            var fsize = document.getElementById("font_s")
+            text.style.fontSize = fsize.value;
+        }
+
+        function fontitalic() {
+            var italicbox = document.getElementById("font_italic").checked
+            var text = document.getElementById('text');
+            if (italicbox === true) {
+                text.style.fontStyle = "italic"
+            } else { text.style.fontStyle = "normal" }
+        }
+        function fontbold() {
+            var text = document.getElementById('text');
+            var boldbox = document.getElementById("font_bold").checked
+
+            if (boldbox === true) {
+                text.style.fontWeight = "bold"
+
+            } else { (text.style.fontWeight = "normal") }
+        }
+        function fontunderline() {
+            var text = document.getElementById('text');
+            var underlinebox = document.getElementById("font_underline").checked
+
+            if (underlinebox === true) {
+                text.style.textDecoration = "underline"
+
+            } else { (text.style.textDecoration = "") }
+        }
+
+    </script>
+    <form name="form">
+        <select name="font_family" id="font_family" onchange="changeFont()">
+            <option value="Arial" selected>Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+        <select name="font_size" id="font_s" onchange="changesize()">
+            <option value="8pt">8pt</option>
+            <option value="10pt">10pt</option>
+            <option value="12pt" selected>12pt</option>
+            <option value="14pt">14pt</option>
+            <option value="16pt">16pt</option>
+        </select>
+        <label>Italic <input type="checkbox" name="font_italic" id="font_italic" onclick="fontitalic()"></label>
+        <label>Bold <input type="checkbox" name="font_bold" id="font_bold" onclick="fontbold()"></label>
+        <label>Underline <input type="checkbox" name="font_underline" id="font_underline"
+                onclick="fontunderline()"></label>
+    </form>
+
+    <div id="text">The quick brown fox jumps over the lazy dog</div>
+
 </body>
+
 </html>
